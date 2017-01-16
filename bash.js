@@ -10,8 +10,7 @@ process.stdin.on('data', function (data) {
 
   if (cmd === 'pwd') {
     var userCommand = 'pwd';
-  }
-  else if (cmd === 'date') {
+  } else if (cmd === 'date') {
     var userCommand = 'date';
   } else if (cmd === 'ls'){
     var userCommand = 'ls';
@@ -21,6 +20,21 @@ process.stdin.on('data', function (data) {
   } else if (cmd.startsWith('cat')){
     var userCommand = 'cat';
     filename = cmd.slice(4);
+  } else if (cmd.startsWith('head')){
+    var userCommand = 'head';
+    filename = cmd.slice(5);
+  } else if (cmd.startsWith('tail')){
+    var userCommand = 'tail';
+    filename = cmd.slice(5);
+  } else if (cmd.startsWith('sort')){
+    var userCommand = 'sort';
+    filename = cmd.slice(5);
+  } else if (cmd.startsWith('wc')){
+    var userCommand = 'wc';
+    filename = cmd.slice(3);
+  } else if (cmd.startsWith('uniq')){
+    var userCommand = 'uniq';
+    filename = cmd.slice(5);
   }
 
   commands[userCommand](filename);
